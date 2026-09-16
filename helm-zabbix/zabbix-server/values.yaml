@@ -1,0 +1,4 @@
+server:
+  name: zabbix-server
+web:
+  name: zabbix-web

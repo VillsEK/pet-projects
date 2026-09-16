@@ -1,0 +1,18 @@
+# stages:
+#   - test
+
+# test2:
+#   image: 
+#     name: bitnami/kubectl
+#     entrypoint: ['']
+#   stage: test
+#   script:
+#     - "kubectl config get-contexts"
+#     - "curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4"
+#     - "chmod 700 get_helm.sh"
+#    # - "bash ./get_helm.sh"
+#    # - "kubectl config use-context root/k8s:k8s"
+#     - "tail -f /dev/null"
+#     #- "kubectl get pods"
+#   tags:
+#     - k8s-runner

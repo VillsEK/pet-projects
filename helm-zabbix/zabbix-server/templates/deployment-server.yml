@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.server.name }}-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      components: {{ .Values.server.name }}
+  template:
+    metadata:
+      name:  {{ .Values.server.name }}
+      labels:
+        components: {{ .Values.server.name }}
+    spec:
+      containers:
+        - name: {{ .Values.server.name }}
+          image: villsek/zabbix-server-exp:v.1.3
+          ports: 
+            - containerPort: 10051
+          env:
+            - name: POSTGRES_USER
+              value: zabbix
+            - name: POSTGRES_PASSWORD
+              value: zabbix12345$a#
+            - name: POSTGRES_DB
+              value: zabbixdb
+            - name: DB_SERVER_HOST
+              value: postgres.default.svc.cluster.local
