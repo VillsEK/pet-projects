@@ -1,0 +1,11 @@
+image: villsek/terraform_ansible_container:latest
+stages:
+  - terraform
+  - test
+  - deploy
+
+terraform_create_vm:
+  stage: terraform
+  script:
+    |
+      cd terraform-proxmox && terraform init && terraform plan && terraform apply -auto-approve
